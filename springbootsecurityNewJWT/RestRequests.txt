@@ -1,0 +1,31 @@
+{
+   "user":    {
+      "id": 7,
+      "firstName": "Vijay1",
+      "lastName": "Vijay1",
+      "email": "vijumca@gmail.com",
+      "password": "$2a$10$S6/qkCGl/X0Ejdo7klYmE.MdoucFHBvxg0JhQnbs2367LCQyvVyGu",
+      "enabled": true,
+      "role": "ADMIN",
+      "phoneNumber": "1234567",
+      "createdDate": "2019-09-26T05:12:33.930+0000"
+   },
+   "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aWp1bWNhQGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE1Njk0NzQ4MjY3ODgsImV4cCI6MTU3MDA3OTYyNn0.yc0Juz51wOkqeUVtbj4ChKKfcir0sAVrNNSvzhgm9okjpCZ-8SxIbjoI7w9fhrXA2_J6-m1IXs7N-l5x0pDcCg"
+}
+
+
+{
+   "user":    {
+      "id": 9,
+      "firstName": "Test",
+      "lastName": "Test",
+      "email": "test@gmail.com",
+      "password": "$2a$10$aBl0NpStKzAhgIF3mbItJ./sMoJpgexH5oY.hPxlEsks41mIm0OF2",
+      "enabled": true,
+      "role": "USER",
+      "phoneNumber": "1234567",
+      "createdDate": "2019-09-26T05:18:48.647+0000"
+   },
+   "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE1Njk0NzU2MTc3MjYsImV4cCI6MTU3MDA4MDQxN30.qkgpEmCO58F0__6avXrpR-k8J6MFn4fmEGgwg8KCQbagVYXBSswLokmud0uMc4XLjuHvwAbY7oIgyQRDV7Dx7Q"
+}
+

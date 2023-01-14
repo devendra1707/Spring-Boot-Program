@@ -1,0 +1,867 @@
+Step1: User Registration
+---------------------------------------------------------------------------------
+http://localhost:8080/registration
+
+{    "firstName": "manisha",
+        "lastName": "manisha",
+        "email":"manisha@gmail.com",
+         "password":"manisha",
+         "enabled":"true",
+         "role":"ADMIN",
+         "phoneNumber":"2222222"
+    }
+	
+	
+	{    "firstName": "shyam",
+        "lastName": "shyam",
+        "email":"shyam@gmail.com",
+         "password":"shyam",
+         "enabled":"true",
+         "role":"USER",
+         "phoneNumber":"2222222"
+    }
+	
+---------------------------------------------------------------------------------
+
+Step2: User Login -> Need to login with email and password -> here will get JwtToken
+
+URL -> http://localhost:8080/login
+
+
+Request: 
+	{    "email":"manisha@gmail.com",
+         "password":"manisha"
+    }
+	
+Response:
+{
+    "user": {
+        "id": 3,
+        "firstName": "manisha",
+        "lastName": "manisha",
+        "email": "manisha@gmail.com",
+        "password": "$2a$10$ISfTPw15hpe1zyg3ucs2FutvHdbCvpjallCRl.r.yv6pFR.ghqiCy",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2023-01-14T15:16:23.257+0000"
+    },
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2hhQGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE2NzM3MDk1MTQwMDQsImV4cCI6MTY3NDMxNDMxNH0.JP0UgkUM2QRLQtblqi6nzY4jrofVCDLXP5xkYDfQmBBTLEytVW5g7NgjYJqFDBmhwsc4ZCCuSnor_2arK2yfIw"
+}
+
+
+
+Request: 
+	{   
+	 "email":"shyam@gmail.com",
+         "password":"shyam"
+    }
+Response:
+{
+    "user": {
+        "id": 4,
+        "firstName": "shyam",
+        "lastName": "shyam",
+        "email": "shyam@gmail.com",
+        "password": "$2a$10$QccRQXNzqp3AQ1WbX3rZCu.ybSQwjjkrC0y89d7l6rCtRwm.K8yfS",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2023-01-14T15:17:10.802+0000"
+    },
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzaHlhbUBnbWFpbC5jb20iLCJjcmVhdGVkIjoxNjczNzA5NzA2OTk2LCJleHAiOjE2NzQzMTQ1MDZ9.WMlQ6pBGLDWy09YKXiiF7Spi5mHHemYB3lycFI75tjwneqvS_fQD6i9xRdvEe1gF8DkqW0j0_Bey-6ILMJf6DA"
+}
+
+--------------------------------------------------------------------------------------------------
+
+Real Business Scenario: GetUserDetails
+
+URL: http://localhost:8080/users -> If we pass user token ->
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI3dG84and0YWRtaW5AZ21haWwuY29tIiwiY3JlYXRlZCI6MTU5MzQ4MzM4MjU0NCwiZXhwIjoxNTk0MDg4MTgyfQ.c7PcD9HumwzFYapYQEPx3eTKnADX8NaAMSMlBGha_HlbtzkMNbxV8bkggbke_iLXibCPkuSHB0N09h52XovSGQ
+
+Need to add an header with Authorization as key and value should be
+Bearer + "JWT Token"
+[
+    {
+        "id": 1,
+        "firstName": "vijay",
+        "lastName": "kumar",
+        "email": "vijumca@gmail.com",
+        "password": "$2a$10$aF6gRACID5DYLC9VVZt2YOeEnVbpsCG7rl77FRwmWkjHy6VFSqihO",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "11111",
+        "createdDate": "2020-03-16T07:14:37.591+0000"
+    },
+    {
+        "id": 2,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$5c6qWAaF/0t/er7rRMp.ROqpl3qjEbgbRNWGhF8OwLl6SO3xSyU4e",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-03-16T07:17:53.043+0000"
+    },
+    {
+        "id": 3,
+        "firstName": "newguest",
+        "lastName": "newguest",
+        "email": "newguest@gmail.com",
+        "password": "$2a$10$C9zNT1dPU.BgwPgAPjnYgOKdxoqZkB./12l47mIuZsNC/Fp59fF8u",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "222222",
+        "createdDate": "2020-03-16T08:35:30.886+0000"
+    },
+    {
+        "id": 4,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$KvQrfyqIPvx7714VxVxvOOkVbD0pBiqvWNdVwt9Xxxp6sIDHi0VJa",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-04-01T12:32:50.597+0000"
+    },
+    {
+        "id": 8,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$Xds/vLr4dIMm/c4iphqhWORtlmlv/oJ8LRSMIFcB8tqDMGjikxUKK",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-04-01T16:28:40.445+0000"
+    },
+    {
+        "id": 9,
+        "firstName": "srikanth",
+        "lastName": "srikanth",
+        "email": "srikanth@gmail.com",
+        "password": "$2a$10$Vrl4hOzbipUoegS7uSmUQOKh3bTJ4mPmUemhXvnbeSKh/w4JE6Kfm",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "11111",
+        "createdDate": "2020-04-01T16:30:10.503+0000"
+    },
+    {
+        "id": 10,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$Efy5Bbb2m3W2FP5HgLk3M.TQMKzmD6qYQsXxqgq5Hj5cvtVHwx1Oe",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-04-02T16:21:04.138+0000"
+    },
+    {
+        "id": 11,
+        "firstName": "phani",
+        "lastName": "phani",
+        "email": "phani@gmail.com",
+        "password": "$2a$10$4DbvIs.9vdEXFHAorNMfOOtE4k8s5fAnTxI84vtdiX/Li1XfbUuaW",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "22222",
+        "createdDate": "2020-04-02T16:22:14.947+0000"
+    },
+    {
+        "id": 12,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$GHVog9j87GEpm7hkY7KFQuO1cwd4IDKdmSEPpmohwjGVSjLyyXhLO",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-05-13T14:10:01.460+0000"
+    },
+    {
+        "id": 13,
+        "firstName": "jwtadmin",
+        "lastName": "jwtadmin",
+        "email": "jwtadmin@gmail.com",
+        "password": "$2a$10$whVru0.CBLuoKSaxssjlY.AQNLuiEO8fZnZdaZlZO/JeQa2ny84jq",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "111111",
+        "createdDate": "2020-05-13T14:13:49.266+0000"
+    },
+    {
+        "id": 14,
+        "firstName": "jwtuser",
+        "lastName": "jwtuser",
+        "email": "jwtuser@gmail.com",
+        "password": "$2a$10$9h1/yRWBqBnrsB7geWT3NOWuz47LflRJohfSQdRIxV7HytZDSIob6",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "111111",
+        "createdDate": "2020-05-13T14:14:29.547+0000"
+    },
+    {
+        "id": 15,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$kEyHYFi0hJ7V2DO2TCHtbOpW9Ofpx3dQQOrZH7KejJFsSAKOmpjKS",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-05-13T14:25:26.009+0000"
+    },
+    {
+        "id": 16,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$5vo1GCW0TyxCmeG1udJv7uaLhtzq3lnPImTn8rvBfYJHms9IBn9Pm",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-05-22T00:52:32.296+0000"
+    },
+    {
+        "id": 19,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$mz4LEsGFKSDhH.53F26AG.tgxTiM0IAHeijRJ3Zsbh8gPAlMF4Ndi",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-06-19T14:40:40.892+0000"
+    },
+    {
+        "id": 20,
+        "firstName": "testjwtadmin",
+        "lastName": "testjwtadmin",
+        "email": "testjwtadmin@gmail.com",
+        "password": "$2a$10$Y41uHzkgf5.h0JRnngC98.RZ5F.oI09eHBVXQ5u8F",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-06-19T14:42:57.407+0000"
+    },
+    {
+        "id": 21,
+        "firstName": "testjwtguest",
+        "lastName": "testjwtguest",
+        "email": "testjwtguest@gmail.com",
+        "password": "$2a$10$3ro8h2fkjx77pA5.q09VyOBIIP74tVIQXGZcuKDZf.UDTrl.l3YJm",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "333333",
+        "createdDate": "2020-06-19T14:44:02.210+0000"
+    },
+    {
+        "id": 22,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$mKBbNsqgNqYGlygM/Bq4ueii3xZl6nHt7DG7GNRHEsa3dGfrBrG3u",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-06-30T02:11:33.437+0000"
+    },
+    {
+        "id": 23,
+        "firstName": "7to8jwtadmin",
+        "lastName": "7to8jwtadmin",
+        "email": "7to8jwtadmin@gmail.com",
+        "password": "$2a$10$sydAtx3EhwFcDohnpnjv/OPie4UnvLHjXzIgUVeRdnYXdmJFVQSdq",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-06-30T02:13:59.776+0000"
+    },
+    {
+        "id": 24,
+        "firstName": "7to8jwtguest",
+        "lastName": "7to8jwtguest",
+        "email": "7to8jwtguest@gmail.com",
+        "password": "$2a$10$5ufcBZgs3la0mqJ0vHjqyOjqZrDnRLdGdFASwibpi1BLPpUvjPbXq",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-06-30T02:15:00.854+0000"
+    },
+    {
+        "id": 25,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$xuA6UIIfCX10s02nWn3Pf.DnGAkRS57GVCA7Sgy3M7M38.Hw90M/O",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-08-26T13:03:51.255+0000"
+    },
+    {
+        "id": 26,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$wbosXNsScoINeqN2uexA6.nxPcI6VPyi.qKN0tP/HSbiNGG3FkHy2",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-08-26T13:42:53.575+0000"
+    },
+    {
+        "id": 27,
+        "firstName": "jwttestadmin",
+        "lastName": "jwttestadmin",
+        "email": "jwttestadmin@gmail.com",
+        "password": "$2a$10$PXX.HkxQxDR4lXs8PVSE.OHAhrVWl8hEHdL1baO9.Wil/U200hRSO",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-08-26T13:45:44.262+0000"
+    },
+    {
+        "id": 28,
+        "firstName": "jwttestuser",
+        "lastName": "jwttestuser",
+        "email": "jwttestuser@gmail.com",
+        "password": "$2a$10$ejWOY3jkVwd4itoYczwZaOKGUb1lNDVjBCFpGaN7/vhBvd7MjeVO6",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-08-26T13:46:20.082+0000"
+    },
+    {
+        "id": 29,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$KCB0fleIVmxw7tbZtosgIeBUohQdJLswMgU837NikaxkJOsPyaXZq",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-09-18T00:48:23.160+0000"
+    },
+    {
+        "id": 30,
+        "firstName": "6to7admin",
+        "lastName": "6to7admin",
+        "email": "6to7admin@gmail.com",
+        "password": "$2a$10$7NGdQg4RXY8u0XjAjOaUAe5oai8RbkZmN9.ME/FRED4Jnt7p4iJTy",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-09-18T00:49:13.433+0000"
+    },
+    {
+        "id": 31,
+        "firstName": "6to7guest",
+        "lastName": "6to7guest",
+        "email": "6to7guest@gmail.com",
+        "password": "$2a$10$RENqXtW.nO9UkEtvOB7gX.6srPQ/FsdoBf2LgcNnDKJaqIZSETAFW",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "33333",
+        "createdDate": "2020-09-18T00:49:53.906+0000"
+    },
+    {
+        "id": 32,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$UEz2.bsapmsYIiX.QnFtWOZQ0jtzcVIkpXgtsMraeboxvhnozerPG",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-10-08T14:36:11.340+0000"
+    },
+    {
+        "id": 33,
+        "firstName": "8to9jwtadmin",
+        "lastName": "8to9jwtadmin",
+        "email": "8to9jwtadmin@gmail.com",
+        "password": "$2a$10$u/gTpI/EicXMRdA1q/.akeGmlChzJ9/FXv4D5PzYcavkjwECxNBQe",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "11111111",
+        "createdDate": "2020-10-08T14:38:06.466+0000"
+    },
+    {
+        "id": 34,
+        "firstName": "8to9jwtguest",
+        "lastName": "8to9jwtguest",
+        "email": "8to9jwtguest@gmail.com",
+        "password": "$2a$10$PAFeY2hz48mHvLFv9B1eqOxF5fHjiW87BuQNtfwM95wyDKU2bkyn.",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "11111111",
+        "createdDate": "2020-10-08T14:39:45.819+0000"
+    },
+    {
+        "id": 35,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$hEBP5eltfK2TAQH/DG5IYO8zlilh.3EgDisvUvRw4fzh97x.9Jtce",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-11-16T01:43:14.459+0000"
+    },
+    {
+        "id": 36,
+        "firstName": "zafaradmin",
+        "lastName": "zafaradmin",
+        "email": "zafaradmin@gmail.com",
+        "password": "$2a$10$gisiMn4IAMNruYjU.mLHNuL2H80L1F/OVCXpm0P6wSoeakukvUZYm",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-11-16T01:46:36.657+0000"
+    },
+    {
+        "id": 37,
+        "firstName": "sriramguest",
+        "lastName": "sriramguest",
+        "email": "sriramguest@gmail.com",
+        "password": "$2a$10$7y2eGZB/p7g0qJAY3/Ykw.7DkPFRRFJrQ1bUtgYqIEyM1OSz7g0VK",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-11-16T01:46:57.878+0000"
+    },
+    {
+        "id": 38,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$xTrGDZb5F7zQfDoXn3h9S.CHxHjTcUag8OJaG.if558eBzYZZgN.y",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-12-22T15:36:15.970+0000"
+    },
+    {
+        "id": 39,
+        "firstName": "9to10jwtadmin",
+        "lastName": "9to10jwtadmin",
+        "email": "9to10jwtadmin@gmail.com",
+        "password": "$2a$10$DlqYTY5ULvJFbWq23yMUCuRozD6oPIbqJRj5ZMUnAGKxomo5nelty",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-12-22T15:38:41.840+0000"
+    },
+    {
+        "id": 40,
+        "firstName": "9to10jwtguest",
+        "lastName": "9to10jwtguest",
+        "email": "9to10jwtguest@gmail.com",
+        "password": "$2a$10$Ai38.y81.WWQ9KxJ/WgHROUDRhdgy/dkQrUX6UGR.ZI6ANZRooWR2",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2020-12-22T15:39:54.376+0000"
+    },
+    {
+        "id": 41,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$0o1sKjOt21AHcjOqbCzsVOYMpM4hEKhopHsDoacTIFmI6U9kvUH2m",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2020-12-22T15:54:31.575+0000"
+    },
+    {
+        "id": 42,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$fn/dRmhYCwXljf9BXbWhOeJ6q.ttAEXIVPzoe/wy17nImkWrI8aOO",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-01-29T00:37:49.660+0000"
+    },
+    {
+        "id": 43,
+        "firstName": "ankuradmin",
+        "lastName": "ankuradmin",
+        "email": "ankuradmin@gmail.com",
+        "password": "$2a$10$kqDN47mZ6.Y66xDYKPKsmOkD/EqtgVYw8Gq43HYZzKvEKfqfTKWFy",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-01-29T00:45:06.981+0000"
+    },
+    {
+        "id": 44,
+        "firstName": "harshaguest",
+        "lastName": "harshaguest",
+        "email": "harshaguest@gmail.com",
+        "password": "$2a$10$Z43BhzmoU6WHo0qicgL34ufDXrOA/b4IxpXyWy1JMJblD93v6IoC6",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-01-29T00:45:30.732+0000"
+    },
+    {
+        "id": 45,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$zEZ0YXaWCKBr85Y3DPmgEufh8FhwWF4fWRVxiXMD/.enLfLTvykm2",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-03-04T02:04:44.565+0000"
+    },
+    {
+        "id": 46,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$eQw2xs31qQbKIaXBd4lKIucMNVLAAESnITVOQjtfGQLd3fdTIbqDG",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-03-04T07:09:47.658+0000"
+    },
+    {
+        "id": 47,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$9pcOlpkUQw4kczmrv3y.nerTOkcpBoTLjQWPcu8bBXOWTUIg8n4ga",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-03-04T07:13:49.387+0000"
+    },
+    {
+        "id": 48,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$IIZn3PJJK881P8Fo6vmHTubYhBuaaLmqr3ga0Ci8AfMXQGd1NylVq",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-03-04T13:38:55.937+0000"
+    },
+    {
+        "id": 49,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$7R0BP/FwiDn/Z/3GEqBkTOCM7pa2xQQIgLXSFs5n.WfE3qihL/2yW",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-03-05T02:08:01.872+0000"
+    },
+    {
+        "id": 50,
+        "firstName": "kishoreadmin",
+        "lastName": "kishoreadmin",
+        "email": "kishoreadmin@gmail.com",
+        "password": "$2a$10$6kqn30THoBA.yBJDz8xG4OkM/gwpnLOcQ.yhyfCPf47j9SgxZt0x6",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-03-05T02:09:11.934+0000"
+    },
+    {
+        "id": 51,
+        "firstName": "sajjanguest",
+        "lastName": "sajjanguest",
+        "email": "sajjanguest@gmail.com",
+        "password": "$2a$10$D7HOKi49BCNaVQ0mB0BBvu/2hQcj.sip/a16sftnZtyT7AE0omIeO",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-03-05T02:09:38.021+0000"
+    },
+    {
+        "id": 52,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$CoaHwIVmnPwAmsLOyWm9nerUtLOoVvt.g2SIs9g9T9oEN53DQ8Kda",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-03-05T05:20:52.765+0000"
+    },
+    {
+        "id": 53,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$C5dWvoTEyDb0hcplff6h8uROxPF.4siGnufN.oynyVxFpvf1Y46jq",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-04-22T15:39:35.236+0000"
+    },
+    {
+        "id": 54,
+        "firstName": "hari",
+        "lastName": "hari",
+        "email": "hari@gmail.com",
+        "password": "$2a$10$fnke4gEcVGyNHto7T0OuMOr6uBFnvf8pdU8R5nYAA52Kt1RFK.OrO",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-04-22T15:42:36.544+0000"
+    },
+    {
+        "id": 55,
+        "firstName": "ganesh",
+        "lastName": "ganesh",
+        "email": "ganesh@gmail.com",
+        "password": "$2a$10$mvG9TbkhITYKTGZt/TUYgu/mXo77LvaHl0jnqkhyAwGfRA0Q9eQbi",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-04-22T15:43:38.398+0000"
+    },
+    {
+        "id": 56,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$6CWu6dBton0V7sTMn0Kdz.pH7ws.bN0N2cXyjUjp3Q9aVY4Zlg/Q.",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-06-04T00:42:27.524+0000"
+    },
+    {
+        "id": 57,
+        "firstName": "mukesh",
+        "lastName": "mukesh",
+        "email": "mukesh@gmail.com",
+        "password": "$2a$10$30RZkTg36Y7s9zXf/nQZyOEHtv9OrpU8UjykA/1toSEto5z30n7v6",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-06-04T00:45:25.313+0000"
+    },
+    {
+        "id": 58,
+        "firstName": "nitesh",
+        "lastName": "nitesh",
+        "email": "nitesh@gmail.com",
+        "password": "$2a$10$/mB5GSCQdcpLCe7nmtBe8.sMcxUHfKMdmpZSSkhjviIQGtRKqrCka",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-06-04T00:46:57.236+0000"
+    },
+    {
+        "id": 59,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$Vs7QaeaKSzT1OMi2dasive6FXtPFZDp5.oo2X2Y7xvIek2MwY.rPS",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-07-30T15:58:18.249+0000"
+    },
+    {
+        "id": 60,
+        "firstName": "ganesh",
+        "lastName": "ganesh",
+        "email": "ganesh@gmail.com",
+        "password": "$2a$10$lpLOPdxcCx4jcZddbsniFO5vMbVnqHbgZ63IlLZJDfi5of13c18tu",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-07-30T16:00:37.473+0000"
+    },
+    {
+        "id": 61,
+        "firstName": "swapna",
+        "lastName": "swapna",
+        "email": "swapna@gmail.com",
+        "password": "$2a$10$Ed46QCAYmxXtPauxvUq0GeBa4agHQ2cxlYmxSSGet4GF4KkWZsW..",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-07-30T16:01:39.896+0000"
+    },
+    {
+        "id": 62,
+        "firstName": "revanth",
+        "lastName": "revanth",
+        "email": "revanth@gmail.com",
+        "password": "$2a$10$4AOvV3iGZs3cSJXKF0s4ie3kb2UiKessNIUIG0Xm.9/cvOc0Xpnhi",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-07-30T16:03:20.649+0000"
+    },
+    {
+        "id": 63,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$Nz647Fp8MfVuVI.9l8lfoOhfB1yYfkmoIuA9QuLdexlJMLDG6pIAC",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-09-02T01:19:17.324+0000"
+    },
+    {
+        "id": 64,
+        "firstName": "hemanth",
+        "lastName": "hemanth",
+        "email": "hemanth@gmail.com",
+        "password": "$2a$10$vbBJSBuDqvejYzoXrvL3TOiOm1TZP3JtBk8ecpp6Vuk3bL/F0ZP9.",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-09-02T01:21:55.758+0000"
+    },
+    {
+        "id": 65,
+        "firstName": "pranay",
+        "lastName": "pranay",
+        "email": "pranay@gmail.com",
+        "password": "$2a$10$yEcOnTSQIn8FGi.oTRBz1eeHmOYx8NWUFbR94dhoQwjjpfZbHdGfu",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-09-02T01:22:20.884+0000"
+    },
+    {
+        "id": 66,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$/ewUSdjrC0tfrfjcas9sGOBy8rjQbnUIVBcdF7dAR5ee9qUGLTaK6",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-10-01T14:39:22.095+0000"
+    },
+    {
+        "id": 67,
+        "firstName": "naveen",
+        "lastName": "naveen",
+        "email": "naveen@gmail.com",
+        "password": "$2a$10$xzNS7hG520g0MRQrqp.z5e8jvWLlVs5njQCL36SQuJvRVYNY/bWlq",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-10-01T14:41:37.285+0000"
+    },
+    {
+        "id": 68,
+        "firstName": "ashok",
+        "lastName": "ashok",
+        "email": "ashok@gmail.com",
+        "password": "$2a$10$yp/dmCtn6Kn0.s8z.AqKRe/Mhr52RyxLDeanpfBnFdqhp6ne924SS",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-10-01T14:42:04.485+0000"
+    },
+    {
+        "id": 69,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$rvq/YVpkmZ8W/hpwRlyoZe7KakQ2WmecAcTbLCis7Cz1IinDn/cyi",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2021-11-25T16:03:40.701+0000"
+    },
+    {
+        "id": 70,
+        "firstName": "venkat",
+        "lastName": "venkat",
+        "email": "venkat@gmail.com",
+        "password": "$2a$10$R24msDGNsI1kTOTfLIsrWuJpQt6L7jlz3DxnGmxGfessh0yaXaV2G",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "1111111",
+        "createdDate": "2021-11-25T16:05:44.265+0000"
+    },
+    {
+        "id": 71,
+        "firstName": "sravan",
+        "lastName": "sravan",
+        "email": "sravan@gmail.com",
+        "password": "$2a$10$1B29OcStUaP5JFY9VYWnw.yR1BjJyxNuxw2.N6zUwqZLhA5qbH4Xu",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2021-11-25T16:06:22.231+0000"
+    },
+    {
+        "id": 72,
+        "firstName": "guest",
+        "lastName": "guest",
+        "email": "guest@gmail.com",
+        "password": "$2a$10$lZTXkvBLxaRAnMkKSBaIreVZcmPpGUcPiVuQHxkt1CWuHsA4pd.lq",
+        "enabled": true,
+        "role": "GUEST",
+        "phoneNumber": "11111",
+        "createdDate": "2022-01-26T01:43:52.687+0000"
+    },
+    {
+        "id": 73,
+        "firstName": "manisha",
+        "lastName": "manisha",
+        "email": "manisha@gmail.com",
+        "password": "$2a$10$NzAeE3ROT2hUJkWBnfB/R.eZlzjWzqGlCy0OJ4IVNXGqLjKInd2ky",
+        "enabled": true,
+        "role": "ADMIN",
+        "phoneNumber": "2222222",
+        "createdDate": "2022-01-26T01:46:57.547+0000"
+    },
+    {
+        "id": 74,
+        "firstName": "shyam",
+        "lastName": "shyam",
+        "email": "shyam@gmail.com",
+        "password": "$2a$10$knCW7z/XdAXZmJDD4RcyLef7JKOVVIX7fVXaHrLpa0T02ox5fEWZS",
+        "enabled": true,
+        "role": "USER",
+        "phoneNumber": "2222222",
+        "createdDate": "2022-01-26T01:47:52.218+0000"
+    }
+]
+
+URL: http://localhost:8080/getuser -> If we pass guest token 
+
+as Authorization as headername as bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW1lc2hAZ21haWwuY29tIiwiY3JlYXRlZCI6MTY0OTE3MTA0NDk3MiwiZXhwIjoxNjQ5Nzc1ODQ0fQ.bYiBO8d2-cuF2WruUU-vwwEJG0v9CKhRwgCJWauX9Ip_FASUDHnWMPJGUil8q0B5vnteVEb_UtJGtOydvjFnBg
+
+Response: It will display that specific user in the database
+
+
+{
+    "id": 80,
+    "firstName": "shyam",
+    "lastName": "shyam",
+    "email": "shyam@gmail.com",
+    "password": "$2a$10$KXCPh4Ak78qud3VwWB0T2u..f8v4b5Sds8au40enxC.f2Jl5cfoyS",
+    "enabled": true,
+    "role": "USER",
+    "phoneNumber": "2222222",
+    "createdDate": "2022-04-05T15:01:05.671+0000"
+}
+
+
+
+
