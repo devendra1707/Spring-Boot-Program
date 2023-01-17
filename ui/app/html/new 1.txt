@@ -1,0 +1,52 @@
+{
+	"firstName":"ramu",
+	"lastName":"ramu",
+	"email":"ramu@ramu.com",
+	"password":"ramu",
+	"enabled":true,
+	"role":"ADMIN",
+	"phoneNumber":"1234567"
+}
+
+{
+   "user":    {
+      "id": 10,
+      "firstName": "ramu",
+      "lastName": "ramu",
+      "email": "ramu@ramu.com",
+      "password": "$2a$10$lQrYKpfvTR0dmwfTKvX.IONCe9wdb0eBGpEicv9L10BxsHsTOb2Ia",
+      "enabled": true,
+      "role": "ADMIN",
+      "phoneNumber": "1234567",
+      "createdDate": "2019-10-02T16:18:11.154+0000"
+   },
+   "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW11QHJhbXUuY29tIiwiY3JlYXRlZCI6MTU3MDAzMzIzOTg1MywiZXhwIjoxNTcwNjM4MDM5fQ.zkxAJQRZ7_IrPDdgXayz98-TQVodvx5f0Km2iRPXLyI_NuPv5z-3v2sloSeGSUs7xrY7TF_TInue8jGu5S_Ehw"
+}
+
+
+
+eyJzdWIiOiJ2aWp1bWNhQGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE1Njk0NzQ4MjY3ODgsImV4cCI6MTU3MDA3OTYyNn0
+
+
+
+{
+	"email":"test@gmail.com",
+	"password":"Test"
+}
+
+
+{
+   "user":    {
+      "id": 9,
+      "firstName": "Test",
+      "lastName": "Test",
+      "email": "test@gmail.com",
+      "password": "$2a$10$aBl0NpStKzAhgIF3mbItJ./sMoJpgexH5oY.hPxlEsks41mIm0OF2",
+      "enabled": true,
+      "role": "USER",
+      "phoneNumber": "1234567",
+      "createdDate": "2019-09-26T05:18:48.647+0000"
+   },
+   "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE1NzAwMzM1ODgzNDQsImV4cCI6MTU3MDYzODM4OH0.MOd28Jg47e6Y4yrLf4goc1ADEupY89OqxpWSIH-U1xQeFz_TRKfFl33Y7J3f3lK3BrMpfPiFCtbHKVBlOWWZAA"
+}
+
