@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: dell
+Build-Jdk: 17.0.5
+Implementation-Title: Employee-Service
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.self.sprintboot.learning.employee
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/com.self.sprin
+ tboot.learning.employee/
+Created-By: Maven Integration for Eclipse
+

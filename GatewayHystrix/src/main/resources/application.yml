@@ -1,0 +1,26 @@
+server:
+  port: 8010    #Hystrix Serivce Port Number
+ 
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+ 
+spring:    
+  application:
+    name: api-gateway   
+     
+management:
+  security:
+    enabled: false  
+ 
+logging:
+  level:
+    com.self.sprintboot.learning.apigateway: DEBUG
