@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: db-service
+
+    
+server:
+ port: 8300
+ 
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8302/eureka
+  instance:
+    hostname: localhost
+  
+logging:
+  file: C:/kibana/log/elkmservice.log
+
